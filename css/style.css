@@ -58,3 +58,8 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
     margin-left: auto;
     margin-right: auto
 }
+
+.card {
+    height: 100%;
+    margin-bottom: 10px;
+}

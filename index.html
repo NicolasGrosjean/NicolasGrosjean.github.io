@@ -2,22 +2,75 @@
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Nicolas Grosjean's realizations</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap_table.css">
+	<title>CartONG TM stats</title>
 </head>
 <body>
 	<header>
-		<a href="http://www.cartong.org/" target="_blank"><img id="cartong-logo" src="./images/CartONG_logo.png" alt="CartONG logo"></a>
+		<a href="http://www.cartong.org/" target="_blank"><img id="cartong-logo" src="images/CartONG_logo.png" alt="CartONG logo"></a>
 		<h1>Statistics</h1>
-		<a href="https://github.com/NicolasGrosjean/tasking_manager_stats" target="_blank"><img id="github-logo" src="./images/GitHub_logo.png" alt="GitHub logo"></a>
-		<a href="http://www.missingmaps.org" target="_blank"><img id="mm-logo" src="./images/mm_logo.png" alt="Missing Maps logo"></a>
-		<a href="https://www.hotosm.org" target="_blank"><img id="hot-logo" src="./images/hot_logo.png" alt="HOT logo"></a>
+		<a href="https://github.com/NicolasGrosjean/tasking_manager_stats" target="_blank"><img id="github-logo" src="images/GitHub_logo.png" alt="GitHub logo"></a>
+		<a href="http://www.missingmaps.org" target="_blank"><img id="mm-logo" src="images/mm_logo.png" alt="Missing Maps logo"></a>
+		<a href="https://www.hotosm.org" target="_blank"><img id="hot-logo" src="images/hot_logo.png" alt="HOT logo"></a>
 	</header>
 	
-		<video width="80%" height="80%" id="video-centered" controls>
-			<source src="./videos/5654.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
+	<!--<video width="80%" height="80%" id="video-centered" controls>
+		<source src="./videos/5654.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>-->
 		
+
+	<div class="card">
+		<table id="projects" class="table datatable-basic table-bordered table-striped table-hover dataTable">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Pays</th>
+					<th>Date début</th>
+					<th>Date fin</th>
+					<th>Bâtiments ajoutés</th>
+					<th>Bâtiments modifiés</th>
+					<th>Bâtiments supprimés</th>
+					<th>Vidéo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>5654</th>
+					<th>Boassa</th>
+					<th>Burkina Faso</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th><a href="5654.html">Project video</a></th>
+				</tr>
+				<tr>
+					<th>5895</th>
+					<th>Jérémie</th>
+					<th>Haïtï</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<script src="js/jquery.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('#projects').DataTable();
+		} );
+	</script>
 </body>
 </html> 
