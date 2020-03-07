@@ -20,57 +20,15 @@
 		<source src="./videos/5654.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>-->
-		
 
-	<div class="card">
-		<table id="projects" class="table datatable-basic table-bordered table-striped table-hover dataTable">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nom</th>
-					<th>Pays</th>
-					<th>Date début</th>
-					<th>Date fin</th>
-					<th>Bâtiments ajoutés</th>
-					<th>Bâtiments modifiés</th>
-					<th>Bâtiments supprimés</th>
-					<th>Vidéo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>5654</th>
-					<th>Boassa</th>
-					<th>Burkina Faso</th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th><a href="5654.html">Project video</a></th>
-				</tr>
-				<tr>
-					<th>5895</th>
-					<th>Jérémie</th>
-					<th>Haïtï</th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	
+	<div id="react_container"></div>
+
 	<script src="js/jquery.min.js"></script>
     <script src="js/datatables.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$('#projects').DataTable();
-		} );
-	</script>
+    <script src="js/dataTmProjects.js"></script>
+	<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="js/table.js"></script>
+
 </body>
 </html> 

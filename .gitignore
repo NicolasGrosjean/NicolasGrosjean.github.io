@@ -1,0 +1,4 @@
+.idea/
+node_modules/
+tmProjects.csv
+package-lock.json
