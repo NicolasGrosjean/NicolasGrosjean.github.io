@@ -15,18 +15,35 @@ var e = React.createElement;
 
 // Fill the table
 
-var TMTable = function (_React$Component) {
-    _inherits(TMTable, _React$Component);
+var TMTableOrVideo = function (_React$Component) {
+    _inherits(TMTableOrVideo, _React$Component);
 
-    function TMTable() {
-        _classCallCheck(this, TMTable);
+    function TMTableOrVideo(props) {
+        _classCallCheck(this, TMTableOrVideo);
 
-        return _possibleConstructorReturn(this, (TMTable.__proto__ || Object.getPrototypeOf(TMTable)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (TMTableOrVideo.__proto__ || Object.getPrototypeOf(TMTableOrVideo)).call(this, props));
+
+        _this.state = { projectID: props.projectID };
+        return _this;
     }
 
-    _createClass(TMTable, [{
-        key: 'render',
+    _createClass(TMTableOrVideo, [{
+        key: "render",
         value: function render() {
+            if (this.state.projectID != null) {
+                // Displays the Video
+                return React.createElement(
+                    "div",
+                    null,
+                    React.createElement(
+                        "video",
+                        { width: "80%", height: "80%", id: "video-centered", controls: true },
+                        React.createElement("source", { src: "./videos/" + this.state.projectID + ".mp4", type: "video/mp4" }),
+                        "Your browser does not support the video tag."
+                    )
+                );
+            }
+            // Displays the table
             var lines = [];
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
@@ -36,7 +53,7 @@ var TMTable = function (_React$Component) {
                 for (var _iterator = Object.keys(tmProjects['Pays projet'])[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var projectID = _step.value;
 
-                    lines.push(React.createElement(TMLineTable, { projectID: projectID }));
+                    lines.push(React.createElement(TMLineTable, { projectID: projectID, table: this, key: projectID }));
                 }
             } catch (err) {
                 _didIteratorError = true;
@@ -54,71 +71,79 @@ var TMTable = function (_React$Component) {
             }
 
             return React.createElement(
-                'table',
-                { id: 'projects', 'class': 'table datatable-basic table-bordered table-striped table-hover dataTable' },
+                "div",
+                null,
                 React.createElement(
-                    'thead',
+                    "div",
                     null,
                     React.createElement(
-                        'tr',
-                        null,
+                        "table",
+                        { key: "0", id: "projects", className: "table datatable-basic table-bordered table-striped table-hover dataTable" },
                         React.createElement(
-                            'th',
+                            "thead",
                             null,
-                            'ID'
+                            React.createElement(
+                                "tr",
+                                { key: "1" },
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "ID"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Name"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Country"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Beginning date"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "End date"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Added buildings"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Updated buildings"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Deleted buildings"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Video"
+                                )
+                            )
                         ),
                         React.createElement(
-                            'th',
+                            "tbody",
                             null,
-                            'Name'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Country'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Beginning date'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'End date'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Added buildings'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Updated buildings'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Deleted buildings'
-                        ),
-                        React.createElement(
-                            'th',
-                            null,
-                            'Video'
+                            lines
                         )
                     )
-                ),
-                React.createElement(
-                    'tbody',
-                    null,
-                    lines
                 )
             );
         }
     }]);
 
-    return TMTable;
+    return TMTableOrVideo;
 }(React.Component);
 
 ;
@@ -131,62 +156,69 @@ var TMLineTable = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (TMLineTable.__proto__ || Object.getPrototypeOf(TMLineTable)).call(this, props));
 
-        _this2.state = { projectID: props.projectID };
+        _this2.state = { projectID: props.projectID, table: props.table };
+
+        _this2.displaysVideo = _this2.displaysVideo.bind(_this2);
         return _this2;
     }
 
     _createClass(TMLineTable, [{
-        key: 'render',
+        key: "displaysVideo",
+        value: function displaysVideo() {
+            this.state.table.setState({ projectID: this.state.projectID });
+        }
+    }, {
+        key: "render",
         value: function render() {
             if (this.state.projectID == 5654) {
                 var video = React.createElement(
-                    'th',
+                    "th",
                     null,
                     React.createElement(
-                        'a',
-                        { href: '5654.html' },
-                        'Project video'
+                        "button",
+                        { onClick: this.displaysVideo },
+                        "Project video"
                     )
                 );
             } else {
-                var video = React.createElement('th', null);
+                var video = React.createElement("th", null);
             }
             return React.createElement(
-                'tr',
+                "tr",
                 null,
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     this.state.projectID
                 ),
-                React.createElement('th', null),
+                React.createElement("th", null),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Pays projet'][this.state.projectID]
                 ),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Date de lancement du projet '][this.state.projectID]
                 ),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Date de fin du projet '][this.state.projectID]
                 ),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Bat. Créé'][this.state.projectID]
                 ),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Bat. Updaté'][this.state.projectID]
                 ),
                 React.createElement(
-                    'th',
+                    "th",
                     null,
                     tmProjects['Bat. Supprimé'][this.state.projectID]
                 ),
@@ -200,4 +232,4 @@ var TMLineTable = function (_React$Component2) {
 
 ;
 
-ReactDOM.render(React.createElement(TMTable, null), document.getElementById('react_container'));
+ReactDOM.render(React.createElement(TMTableOrVideo, null), document.getElementById('react_container'));
