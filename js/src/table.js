@@ -1,8 +1,3 @@
-// Add datable interactions
-$(document).ready(function() {
-    $('#projects').DataTable();
-} );
-
 const e = React.createElement;
 
 // Fill the table
@@ -10,15 +5,32 @@ class TMTableOrVideo extends React.Component {
     constructor(props) {
         super(props);
         this.state = { projectID: props.projectID };
+        if (props.projectID == null) {
+            this.addDataTableInteractions()
+        }
+
+        this.backToTable = this.backToTable.bind(this);
+    }
+
+    addDataTableInteractions() {
+        $(document).ready(function() {
+            $('#projects').DataTable();
+        } );
+    }
+
+    backToTable() {
+        this.setState({projectID: null})
+        this.addDataTableInteractions()
     }
 
     render() {
         if (this.state.projectID != null) {
             // Displays the Video
-            return <div><video width="80%" height="80%" id="video-centered" controls>
+            return <div><video width="75%" height="75%" id="video-centered" controls>
                 <source src={"./videos/" + this.state.projectID + ".mp4"} type="video/mp4"/>
                 Your browser does not support the video tag.
-            </video></div>
+            </video>
+            <button onClick={this.backToTable}>Back to table</button></div>
         }
         // Displays the table
         let lines = []

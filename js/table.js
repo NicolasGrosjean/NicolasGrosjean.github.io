@@ -6,11 +6,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// Add datable interactions
-$(document).ready(function () {
-    $('#projects').DataTable();
-});
-
 var e = React.createElement;
 
 // Fill the table
@@ -24,10 +19,28 @@ var TMTableOrVideo = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (TMTableOrVideo.__proto__ || Object.getPrototypeOf(TMTableOrVideo)).call(this, props));
 
         _this.state = { projectID: props.projectID };
+        if (props.projectID == null) {
+            _this.addDataTableInteractions();
+        }
+
+        _this.backToTable = _this.backToTable.bind(_this);
         return _this;
     }
 
     _createClass(TMTableOrVideo, [{
+        key: "addDataTableInteractions",
+        value: function addDataTableInteractions() {
+            $(document).ready(function () {
+                $('#projects').DataTable();
+            });
+        }
+    }, {
+        key: "backToTable",
+        value: function backToTable() {
+            this.setState({ projectID: null });
+            this.addDataTableInteractions();
+        }
+    }, {
         key: "render",
         value: function render() {
             if (this.state.projectID != null) {
@@ -37,9 +50,14 @@ var TMTableOrVideo = function (_React$Component) {
                     null,
                     React.createElement(
                         "video",
-                        { width: "80%", height: "80%", id: "video-centered", controls: true },
+                        { width: "75%", height: "75%", id: "video-centered", controls: true },
                         React.createElement("source", { src: "./videos/" + this.state.projectID + ".mp4", type: "video/mp4" }),
                         "Your browser does not support the video tag."
+                    ),
+                    React.createElement(
+                        "button",
+                        { onClick: this.backToTable },
+                        "Back to table"
                     )
                 );
             }
