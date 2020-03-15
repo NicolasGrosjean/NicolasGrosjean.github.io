@@ -73,6 +73,7 @@ var TMTableOrVideo = function (_React$Component) {
 
                     lines.push(React.createElement(TMLineTable, { projectID: projectID, table: this, key: projectID }));
                 }
+                // Encapsulate the table in 2 divs because of a removeChild error when rendering a video
             } catch (err) {
                 _didIteratorError = true;
                 _iteratorError = err;
@@ -90,7 +91,7 @@ var TMTableOrVideo = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                null,
+                { id: "project-table" },
                 React.createElement(
                     "div",
                     null,
@@ -207,7 +208,11 @@ var TMLineTable = function (_React$Component2) {
                 React.createElement(
                     "th",
                     null,
-                    this.state.projectID
+                    React.createElement(
+                        "a",
+                        { href: "https://tasks.hotosm.org/project/" + this.state.projectID },
+                        this.state.projectID
+                    )
                 ),
                 React.createElement("th", null),
                 React.createElement(

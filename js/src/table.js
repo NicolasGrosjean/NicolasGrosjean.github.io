@@ -37,7 +37,8 @@ class TMTableOrVideo extends React.Component {
         for (const projectID of Object.keys(tmProjects['Pays projet'])) {
             lines.push(<TMLineTable projectID={projectID} table={this} key={projectID}/>)
         }
-        return <div><div>
+        // Encapsulate the table in 2 divs because of a removeChild error when rendering a video
+        return <div id="project-table"><div>
         <table key="0" id="projects" className="table datatable-basic table-bordered table-striped table-hover dataTable">
         <thead>
 				<tr key="1">
@@ -79,7 +80,7 @@ class TMLineTable extends React.Component {
             var video = <th></th>
         }
         return <tr>
-            <th>{this.state.projectID}</th>
+            <th><a href={"https://tasks.hotosm.org/project/" + this.state.projectID}>{this.state.projectID}</a></th>
             <th></th>
             <th>{tmProjects['Pays projet'][this.state.projectID]}</th>
             <th>{tmProjects['Date de lancement du projet '][this.state.projectID]}</th>
