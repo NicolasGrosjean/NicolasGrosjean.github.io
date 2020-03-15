@@ -147,7 +147,7 @@ var TMTableOrVideo = function (_React$Component) {
                                 React.createElement(
                                     "th",
                                     null,
-                                    "Video"
+                                    "Resources"
                                 )
                             )
                         ),
@@ -178,6 +178,7 @@ var TMLineTable = function (_React$Component2) {
         _this2.state = { projectID: props.projectID, table: props.table };
 
         _this2.displaysVideo = _this2.displaysVideo.bind(_this2);
+        _this2.downloadHistoricalData = _this2.downloadHistoricalData.bind(_this2);
         return _this2;
     }
 
@@ -187,20 +188,40 @@ var TMLineTable = function (_React$Component2) {
             this.state.table.setState({ projectID: this.state.projectID });
         }
     }, {
+        key: "downloadHistoricalData",
+        value: function downloadHistoricalData() {
+            window.open('./data/Historical_data_' + this.state.projectID + '.zip');
+        }
+    }, {
         key: "render",
         value: function render() {
             if (this.state.projectID == 5654) {
-                var video = React.createElement(
+                var resource = React.createElement(
                     "th",
                     null,
                     React.createElement(
                         "button",
-                        { onClick: this.displaysVideo },
-                        "Project video"
+                        { className: "tooltip", onClick: this.displaysVideo },
+                        React.createElement(
+                            "span",
+                            { className: "tooltiptext" },
+                            "Display video of project evolution"
+                        ),
+                        React.createElement("i", { className: "fab fa-youtube" })
+                    ),
+                    React.createElement(
+                        "button",
+                        { className: "tooltip", type: "submit", onClick: this.downloadHistoricalData },
+                        React.createElement(
+                            "span",
+                            { className: "tooltiptext" },
+                            "Download historical data on the project life"
+                        ),
+                        React.createElement("i", { className: "fas fa-database" })
                     )
                 );
             } else {
-                var video = React.createElement("th", null);
+                var resource = React.createElement("th", null);
             }
             return React.createElement(
                 "tr",
@@ -245,7 +266,7 @@ var TMLineTable = function (_React$Component2) {
                     null,
                     tmProjects['Bat. Supprimé'][this.state.projectID]
                 ),
-                video
+                resource
             );
         }
     }]);

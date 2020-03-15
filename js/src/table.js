@@ -50,7 +50,7 @@ class TMTableOrVideo extends React.Component {
 					<th>Added buildings</th>
 					<th>Updated buildings</th>
 					<th>Deleted buildings</th>
-					<th>Video</th>
+					<th>Resources</th>
 				</tr>
 			</thead>
         <tbody>
@@ -67,17 +67,31 @@ class TMLineTable extends React.Component {
         this.state = { projectID: props.projectID, table: props.table };
 
         this.displaysVideo = this.displaysVideo.bind(this);
+        this.downloadHistoricalData = this.downloadHistoricalData.bind(this);
     }
 
     displaysVideo() {
         this.state.table.setState({projectID: this.state.projectID})
     }
 
+    downloadHistoricalData() {
+        window.open('./data/Historical_data_' + this.state.projectID + '.zip')
+    }
+
     render() {
         if (this.state.projectID == 5654) {
-            var video = <th><button onClick={this.displaysVideo}>Project video</button></th>
+            var resource = <th>
+                <button className="tooltip" onClick={this.displaysVideo}>
+                    <span className="tooltiptext">Display video of project evolution</span>
+                    <i className="fab fa-youtube"></i>
+                </button>
+                <button className="tooltip" type="submit" onClick={this.downloadHistoricalData}>
+                    <span className="tooltiptext">Download historical data on the project life</span>
+                    <i className="fas fa-database"></i>
+                </button>
+                </th>
         } else {
-            var video = <th></th>
+            var resource = <th></th>
         }
         return <tr>
             <th><a href={"https://tasks.hotosm.org/project/" + this.state.projectID}>{this.state.projectID}</a></th>
@@ -88,7 +102,7 @@ class TMLineTable extends React.Component {
             <th>{tmProjects['Bat. Créé'][this.state.projectID]}</th>
             <th>{tmProjects['Bat. Updaté'][this.state.projectID]}</th>
             <th>{tmProjects['Bat. Supprimé'][this.state.projectID]}</th>
-            {video}
+            {resource}
         </tr>
     }
 };
