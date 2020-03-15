@@ -9,6 +9,10 @@ def create_data_tm_project_file():
               'Bat. Créé', 'Bat. Updaté', 'Bat. Supprimé']]
     df2 = df2[~pd.isnull(df2['Bat. Créé'])]
     df2 = df2.set_index('N° Projet')
+    df2['Date de lancement du projet '] = pd.to_datetime(df2['Date de lancement du projet '])
+    df2['Date de lancement du projet '] = df2['Date de lancement du projet '].apply(lambda t: '' if pd.isnull(t) else t.strftime('%Y/%m/%d'))
+    df2['Date de fin du projet '] = pd.to_datetime(df2['Date de fin du projet '])
+    df2['Date de fin du projet '] = df2['Date de fin du projet '].apply(lambda t: '' if pd.isnull(t) else t.strftime('%Y/%m/%d'))
     df2.to_json(js_file)
 
     with open(js_file, mode='r') as f:
