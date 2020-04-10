@@ -1,4 +1,4 @@
 .idea/
 node_modules/
-tmProjects.csv
+tmProjects*.csv
 package-lock.json

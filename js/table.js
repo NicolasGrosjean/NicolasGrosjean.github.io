@@ -132,6 +132,26 @@ var TMTableOrVideo = function (_React$Component) {
                                 React.createElement(
                                     "th",
                                     null,
+                                    "Mapping (h)"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Validation (h)"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Contributors"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Mapathons"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
                                     "Added buildings"
                                 ),
                                 React.createElement(
@@ -218,6 +238,35 @@ var TMLineTable = function (_React$Component2) {
                             "Download historical data on the project life"
                         ),
                         React.createElement("i", { className: "fas fa-database" })
+                    ),
+                    React.createElement(
+                        "div",
+                        null,
+                        React.createElement(
+                            "a",
+                            { href: tmProjects['Publications'][this.state.projectID], className: "button tooltip" },
+                            React.createElement(
+                                "span",
+                                { className: "tooltiptext" },
+                                "Web article on the project"
+                            ),
+                            React.createElement("i", { className: "fas fa-newspaper" })
+                        )
+                    )
+                );
+            } else if (tmProjects['Publications'][this.state.projectID]) {
+                var resource = React.createElement(
+                    "th",
+                    null,
+                    React.createElement(
+                        "a",
+                        { href: tmProjects['Publications'][this.state.projectID], className: "button tooltip" },
+                        React.createElement(
+                            "span",
+                            { className: "tooltiptext" },
+                            "Web article on the project"
+                        ),
+                        React.createElement("i", { className: "fas fa-newspaper" })
                     )
                 );
             } else {
@@ -235,7 +284,11 @@ var TMLineTable = function (_React$Component2) {
                         this.state.projectID
                     )
                 ),
-                React.createElement("th", null),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Short Name'][this.state.projectID]
+                ),
                 React.createElement(
                     "th",
                     null,
@@ -250,6 +303,26 @@ var TMLineTable = function (_React$Component2) {
                     "th",
                     null,
                     tmProjects['Date de fin du projet '][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Temps carto (h)'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Temps valid (h)'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Stats contributeurs'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Nb Mapathon'][this.state.projectID]
                 ),
                 React.createElement(
                     "th",

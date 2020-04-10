@@ -47,6 +47,10 @@ class TMTableOrVideo extends React.Component {
 					<th>Country</th>
 					<th>Beginning date</th>
 					<th>End date</th>
+					<th>Mapping (h)</th>
+					<th>Validation (h)</th>
+					<th>Contributors</th>
+					<th>Mapathons</th>
 					<th>Added buildings</th>
 					<th>Updated buildings</th>
 					<th>Deleted buildings</th>
@@ -89,16 +93,33 @@ class TMLineTable extends React.Component {
                     <span className="tooltiptext">Download historical data on the project life</span>
                     <i className="fas fa-database"></i>
                 </button>
+                <div>
+                <a href={tmProjects['Publications'][this.state.projectID]} className="button tooltip">
+                    <span className="tooltiptext">Web article on the project</span>
+                    <i className="fas fa-newspaper"></i>
+                </a>
+                </div>
+                </th>
+        } else if (tmProjects['Publications'][this.state.projectID]) {
+            var resource = <th>
+                <a href={tmProjects['Publications'][this.state.projectID]} className="button tooltip">
+                    <span className="tooltiptext">Web article on the project</span>
+                    <i className="fas fa-newspaper"></i>
+                </a>
                 </th>
         } else {
             var resource = <th></th>
         }
         return <tr>
             <th><a href={"https://tasks.hotosm.org/project/" + this.state.projectID}>{this.state.projectID}</a></th>
-            <th></th>
+            <th>{tmProjects['Short Name'][this.state.projectID]}</th>
             <th>{tmProjects['Pays projet'][this.state.projectID]}</th>
             <th>{tmProjects['Date de lancement du projet '][this.state.projectID]}</th>
             <th>{tmProjects['Date de fin du projet '][this.state.projectID]}</th>
+            <th>{tmProjects['Temps carto (h)'][this.state.projectID]}</th>
+            <th>{tmProjects['Temps valid (h)'][this.state.projectID]}</th>
+            <th>{tmProjects['Stats contributeurs'][this.state.projectID]}</th>
+            <th>{tmProjects['Nb Mapathon'][this.state.projectID]}</th>
             <th>{tmProjects['Bat. Créé'][this.state.projectID]}</th>
             <th>{tmProjects['Bat. Updaté'][this.state.projectID]}</th>
             <th>{tmProjects['Bat. Supprimé'][this.state.projectID]}</th>
