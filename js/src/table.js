@@ -14,7 +14,9 @@ class TMTableOrVideo extends React.Component {
 
     addDataTableInteractions() {
         $(document).ready(function() {
-            $('#projects').DataTable();
+            $('#projects').DataTable({
+                "lengthMenu": [15]
+            });
         } );
     }
 

@@ -31,7 +31,9 @@ var TMTableOrVideo = function (_React$Component) {
         key: "addDataTableInteractions",
         value: function addDataTableInteractions() {
             $(document).ready(function () {
-                $('#projects').DataTable();
+                $('#projects').DataTable({
+                    "lengthMenu": [15]
+                });
             });
         }
     }, {
