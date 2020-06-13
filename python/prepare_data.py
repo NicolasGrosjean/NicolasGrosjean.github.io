@@ -4,11 +4,12 @@ import pandas as pd
 
 def create_data_tm_project_file():
     js_file = os.path.join('..', 'js', 'dataTmProjects.js')
-    df = pd.read_csv(os.path.join('..', 'tmProjects.csv'))
+    df = pd.read_csv(os.path.join('..', 'tmProjects.csv'), header=1)
     df2 = df[['Pays projet', 'N° Projet', 'Date de lancement du projet ', 'Date de fin du projet ',
-              'Temps carto (h)', 'Temps valid (h)', 'Stats contributeurs', 'Nb Mapathon', 'Publications', 'Short Name',
-              'Bat. Créé', 'Bat. Updaté', 'Bat. Supprimé']]
-    df2 = df2[~pd.isnull(df2['Bat. Créé'])]
+              'Temps carto (h)', 'Temps valid (h)', 'Part valid', 'Nb contributeurs', 'Nb Mapathon', 'Publications',
+              'Short Name', 'Bat. Créé (Nicolas)', 'Bat. Updaté (Nicolas)', 'Bat. Supprimé (Nicolas)',
+              'Bat. / minute (Nicolas)', 'Delta Routes km (Nicolas)']]
+    df2 = df2[~pd.isnull(df2['Bat. Créé (Nicolas)'])]
     df2['N° Projet'] = df2['N° Projet'].astype(int)
     df2 = df2.set_index('N° Projet')
     df2['Date de lancement du projet '] = pd.to_datetime(df2['Date de lancement du projet '])

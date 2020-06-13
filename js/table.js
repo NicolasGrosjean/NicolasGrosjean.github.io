@@ -139,7 +139,12 @@ var TMTableOrVideo = function (_React$Component) {
                                 React.createElement(
                                     "th",
                                     null,
-                                    "Validation (h)"
+                                    "Valid. (h)"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Part valid."
                                 ),
                                 React.createElement(
                                     "th",
@@ -165,6 +170,16 @@ var TMTableOrVideo = function (_React$Component) {
                                     "th",
                                     null,
                                     "Deleted buildings"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Buildings / min"
+                                ),
+                                React.createElement(
+                                    "th",
+                                    null,
+                                    "Delta routes (km)"
                                 ),
                                 React.createElement(
                                     "th",
@@ -319,7 +334,12 @@ var TMLineTable = function (_React$Component2) {
                 React.createElement(
                     "th",
                     null,
-                    tmProjects['Stats contributeurs'][this.state.projectID]
+                    tmProjects['Part valid'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Nb contributeurs'][this.state.projectID]
                 ),
                 React.createElement(
                     "th",
@@ -329,17 +349,27 @@ var TMLineTable = function (_React$Component2) {
                 React.createElement(
                     "th",
                     null,
-                    tmProjects['Bat. Créé'][this.state.projectID]
+                    tmProjects['Bat. Créé (Nicolas)'][this.state.projectID]
                 ),
                 React.createElement(
                     "th",
                     null,
-                    tmProjects['Bat. Updaté'][this.state.projectID]
+                    tmProjects['Bat. Updaté (Nicolas)'][this.state.projectID]
                 ),
                 React.createElement(
                     "th",
                     null,
-                    tmProjects['Bat. Supprimé'][this.state.projectID]
+                    tmProjects['Bat. Supprimé (Nicolas)'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Bat. / minute (Nicolas)'][this.state.projectID]
+                ),
+                React.createElement(
+                    "th",
+                    null,
+                    tmProjects['Delta Routes km (Nicolas)'][this.state.projectID]
                 ),
                 resource
             );

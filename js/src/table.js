@@ -50,12 +50,15 @@ class TMTableOrVideo extends React.Component {
 					<th>Beginning date</th>
 					<th>End date</th>
 					<th>Mapping (h)</th>
-					<th>Validation (h)</th>
+					<th>Valid. (h)</th>
+					<th>Part valid.</th>
 					<th>Contributors</th>
 					<th>Mapathons</th>
 					<th>Added buildings</th>
 					<th>Updated buildings</th>
 					<th>Deleted buildings</th>
+					<th>Buildings / min</th>
+					<th>Delta routes (km)</th>
 					<th>Resources</th>
 				</tr>
 			</thead>
@@ -120,11 +123,14 @@ class TMLineTable extends React.Component {
             <th>{tmProjects['Date de fin du projet '][this.state.projectID]}</th>
             <th>{tmProjects['Temps carto (h)'][this.state.projectID]}</th>
             <th>{tmProjects['Temps valid (h)'][this.state.projectID]}</th>
-            <th>{tmProjects['Stats contributeurs'][this.state.projectID]}</th>
+            <th>{tmProjects['Part valid'][this.state.projectID]}</th>
+            <th>{tmProjects['Nb contributeurs'][this.state.projectID]}</th>
             <th>{tmProjects['Nb Mapathon'][this.state.projectID]}</th>
-            <th>{tmProjects['Bat. Créé'][this.state.projectID]}</th>
-            <th>{tmProjects['Bat. Updaté'][this.state.projectID]}</th>
-            <th>{tmProjects['Bat. Supprimé'][this.state.projectID]}</th>
+            <th>{tmProjects['Bat. Créé (Nicolas)'][this.state.projectID]}</th>
+            <th>{tmProjects['Bat. Updaté (Nicolas)'][this.state.projectID]}</th>
+            <th>{tmProjects['Bat. Supprimé (Nicolas)'][this.state.projectID]}</th>
+            <th>{tmProjects['Bat. / minute (Nicolas)'][this.state.projectID]}</th>
+            <th>{tmProjects['Delta Routes km (Nicolas)'][this.state.projectID]}</th>
             {resource}
         </tr>
     }
