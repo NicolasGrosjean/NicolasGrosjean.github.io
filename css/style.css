@@ -16,12 +16,9 @@ header {
 }
 
 footer {
-    position: fixed;
-    bottom : 0;
-    left: 0;
     text-align: center;
-    padding: 1.25em;
-    width: 100%
+    width: 100%;
+    margin-top: -15px;
 }
 
 header h1 {
@@ -63,6 +60,11 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 a h1 {
     color: #222;
+}
+
+/* Override datable padding-top and padding-bottom from 10px to 0px*/
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 8px 0px;
 }
 
 button, a.button {
