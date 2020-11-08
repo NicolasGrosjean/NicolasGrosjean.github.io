@@ -22,3 +22,12 @@
 .container {
   padding: 2px 16px;
 }
+
+footer {
+    position: fixed;
+    bottom : 0;
+    left: 0;
+    text-align: center;
+    padding: 1.25em;
+    width: 100%
+}
