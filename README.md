@@ -20,7 +20,10 @@ To generate javascript for the website, you need to run the
 
 Once the setup is done in the `js` directory, simply run the following command :
 
-```npx babel --watch src --out-dir . --presets react-app/prod ```
+```
+cd js/
+npx babel --watch src --out-dir . --presets react-app/prod
+```
 
 ## Credits
 

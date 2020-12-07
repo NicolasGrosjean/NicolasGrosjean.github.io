@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  margin: revert; /*revert bootstrap margin*/
   font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
@@ -144,4 +145,13 @@ a.button {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.prev-next-button {
+  vertical-align: middle;
+}
+
+/* Override bootstrap */
+img {
+  vertical-align: baseline;
 }
