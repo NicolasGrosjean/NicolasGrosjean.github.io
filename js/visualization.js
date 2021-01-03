@@ -116,11 +116,15 @@ var MapathonPlots = function (_React$Component3) {
         value: function render() {
             return React.createElement(
                 "div",
-                { className: "container-fluid" },
+                { className: "container-fluid plot-upper-div" },
                 React.createElement(
                     "div",
                     { className: "row justify-content-center" },
-                    React.createElement("div", { className: "col-1" }),
+                    React.createElement(
+                        "div",
+                        { className: "col-1" },
+                        React.createElement("img", { id: "tm-legend", src: "images/TM_legend.jpg", alt: "Tasking Manager Legend" })
+                    ),
                     React.createElement(
                         "div",
                         { className: "col-10" },
@@ -197,7 +201,7 @@ var VisualizationPage = function (_React$Component5) {
 
         var _this5 = _possibleConstructorReturn(this, (VisualizationPage.__proto__ || Object.getPrototypeOf(VisualizationPage)).call(this, props));
 
-        _this5.state = { page: 1 };
+        _this5.state = { page: 0 };
         _this5.nextPage = _this5.nextPage.bind(_this5);
         _this5.previousPage = _this5.previousPage.bind(_this5);
         return _this5;

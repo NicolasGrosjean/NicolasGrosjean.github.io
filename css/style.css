@@ -63,6 +63,14 @@ a h1 {
     color: #222;
 }
 
+.plot-upper-div {
+    margin-bottom: 15px;
+}
+
+img#tm-legend {
+  max-width: 160px;
+}
+
 /* Override datable padding-top and padding-bottom from 10px to 0px*/
 table.dataTable tbody th, table.dataTable tbody td {
     padding: 8px 0px;

@@ -63,9 +63,10 @@ class MapathonPlots extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid plot-upper-div">
                 <div className="row justify-content-center">
                     <div className="col-1">
+                        <img id="tm-legend" src="images/TM_legend.jpg" alt="Tasking Manager Legend"/>
                     </div>
                     <div className="col-10">
                         <div id='plot'></div>
@@ -106,7 +107,7 @@ class Video extends React.Component {
 class VisualizationPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {page: 1};
+        this.state = {page: 0};
         this.nextPage = this.nextPage.bind(this);
         this.previousPage = this.previousPage.bind(this);
     }
