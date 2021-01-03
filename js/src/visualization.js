@@ -24,7 +24,12 @@ class MapathonPlots extends React.Component {
     }
 
     plot() {
-        Plotly.react('plot', this.state.data.data, this.state.data.layout, {responsive: false});
+        if (this.state.data !== null) {
+            const frames = this.state.data.frames;
+            Plotly.react('plot', this.state.data.data, this.state.data.layout, {"responsive": false}).then(function(){
+                Plotly.addFrames('plot', frames);
+            }).then(function(){Plotly.animate('plot', null);});
+        }
     }
 
     updateData(filename, state) {
@@ -47,14 +52,14 @@ class MapathonPlots extends React.Component {
         };
     }
 
-//    componentDidMount() {
-//        this.updateData('mapathon_9849_2020-11-23.json', this.state);
-//        this.plot();
-//    }
-//
-//    componentDidUpdate() {
-//        this.plot();
-//    }
+    componentDidMount() {
+        this.updateData('mapathon_9849_2020-11-23.json', this.state);
+        this.plot();
+    }
+
+    componentDidUpdate() {
+        this.plot();
+    }
 
     render() {
         return (

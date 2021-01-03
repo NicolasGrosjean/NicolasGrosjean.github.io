@@ -70,7 +70,14 @@ var MapathonPlots = function (_React$Component3) {
     _createClass(MapathonPlots, [{
         key: "plot",
         value: function plot() {
-            Plotly.react('plot', this.state.data.data, this.state.data.layout, { responsive: false });
+            if (this.state.data !== null) {
+                var frames = this.state.data.frames;
+                Plotly.react('plot', this.state.data.data, this.state.data.layout, { "responsive": false }).then(function () {
+                    Plotly.addFrames('plot', frames);
+                }).then(function () {
+                    Plotly.animate('plot', null);
+                });
+            }
         }
     }, {
         key: "updateData",
@@ -93,16 +100,17 @@ var MapathonPlots = function (_React$Component3) {
                 }
             };
         }
-
-        //    componentDidMount() {
-        //        this.updateData('mapathon_9849_2020-11-23.json', this.state);
-        //        this.plot();
-        //    }
-        //
-        //    componentDidUpdate() {
-        //        this.plot();
-        //    }
-
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.updateData('mapathon_9849_2020-11-23.json', this.state);
+            this.plot();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            this.plot();
+        }
     }, {
         key: "render",
         value: function render() {
