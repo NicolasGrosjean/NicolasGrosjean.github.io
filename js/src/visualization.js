@@ -19,8 +19,9 @@ class NextButton extends React.Component {
 class MapathonPlots extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: null}
+        this.state = {filename: 'mapathon_9975_2020-12-07.json', data: null}
         this.plot = this.plot.bind(this);
+        this.changeFile = this.changeFile.bind(this);
     }
 
     plot() {
@@ -32,10 +33,15 @@ class MapathonPlots extends React.Component {
         }
     }
 
-    updateData(filename, state) {
+    changeFile(event) {
+        this.state.filename = event.target.value;
+        this.updateData(this.state);
+    }
+
+    updateData(state) {
         const react_page = this;
         const request = new XMLHttpRequest();
-        request.open('GET', './json/' + filename, true);
+        request.open('GET', './json/' + state.filename, true);
         request.send(null);
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
@@ -53,7 +59,7 @@ class MapathonPlots extends React.Component {
     }
 
     componentDidMount() {
-        this.updateData('mapathon_9849_2020-11-23.json', this.state);
+        this.updateData(this.state);
         this.plot();
     }
 
@@ -66,6 +72,13 @@ class MapathonPlots extends React.Component {
             <div className="container-fluid plot-upper-div">
                 <div className="row justify-content-center">
                     <div className="col-1">
+                        <select className="select-css" value={this.state.filename} onChange={this.changeFile}>
+                            <optgroup label="2020">
+                                <option value="mapathon_9975_2020-12-07.json">7th December</option>
+                                <option value="mapathon_9932_2020-11-30.json">30th November</option>
+                                <option value="mapathon_9849_2020-11-23.json">23th November</option>
+                            </optgroup>
+                        </select>
                         <img id="tm-legend" src="images/TM_legend.jpg" alt="Tasking Manager Legend"/>
                     </div>
                     <div className="col-10">

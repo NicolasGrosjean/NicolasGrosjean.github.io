@@ -62,8 +62,9 @@ var MapathonPlots = function (_React$Component3) {
 
         var _this3 = _possibleConstructorReturn(this, (MapathonPlots.__proto__ || Object.getPrototypeOf(MapathonPlots)).call(this, props));
 
-        _this3.state = { data: null };
+        _this3.state = { filename: 'mapathon_9975_2020-12-07.json', data: null };
         _this3.plot = _this3.plot.bind(_this3);
+        _this3.changeFile = _this3.changeFile.bind(_this3);
         return _this3;
     }
 
@@ -80,11 +81,17 @@ var MapathonPlots = function (_React$Component3) {
             }
         }
     }, {
+        key: "changeFile",
+        value: function changeFile(event) {
+            this.state.filename = event.target.value;
+            this.updateData(this.state);
+        }
+    }, {
         key: "updateData",
-        value: function updateData(filename, state) {
+        value: function updateData(state) {
             var react_page = this;
             var request = new XMLHttpRequest();
-            request.open('GET', './json/' + filename, true);
+            request.open('GET', './json/' + state.filename, true);
             request.send(null);
             request.onreadystatechange = function () {
                 if (request.readyState === 4 && request.status === 200) {
@@ -103,7 +110,7 @@ var MapathonPlots = function (_React$Component3) {
     }, {
         key: "componentDidMount",
         value: function componentDidMount() {
-            this.updateData('mapathon_9849_2020-11-23.json', this.state);
+            this.updateData(this.state);
             this.plot();
         }
     }, {
@@ -123,6 +130,29 @@ var MapathonPlots = function (_React$Component3) {
                     React.createElement(
                         "div",
                         { className: "col-1" },
+                        React.createElement(
+                            "select",
+                            { className: "select-css", value: this.state.filename, onChange: this.changeFile },
+                            React.createElement(
+                                "optgroup",
+                                { label: "2020" },
+                                React.createElement(
+                                    "option",
+                                    { value: "mapathon_9975_2020-12-07.json" },
+                                    "7th December"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "mapathon_9932_2020-11-30.json" },
+                                    "30th November"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "mapathon_9849_2020-11-23.json" },
+                                    "23th November"
+                                )
+                            )
+                        ),
                         React.createElement("img", { id: "tm-legend", src: "images/TM_legend.jpg", alt: "Tasking Manager Legend" })
                     ),
                     React.createElement(
