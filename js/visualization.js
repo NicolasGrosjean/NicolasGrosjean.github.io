@@ -75,6 +75,7 @@ var MapathonPlots = function (_React$Component3) {
                 var frames = this.state.data.frames;
                 Plotly.react('plot', this.state.data.data, this.state.data.layout, { "responsive": false }).then(function () {
                     Plotly.addFrames('plot', frames);
+                    document.getElementById('loading').style.display = 'none';
                 });
             }
         }
@@ -92,6 +93,7 @@ var MapathonPlots = function (_React$Component3) {
             request.open('GET', './json/' + state.filename, true);
             request.send(null);
             request.onreadystatechange = function () {
+                document.getElementById('loading').style.display = 'block';
                 if (request.readyState === 4 && request.status === 200) {
                     var type = request.getResponseHeader('Content-Type');
                     if (type.indexOf('text') !== 1) {
@@ -102,6 +104,7 @@ var MapathonPlots = function (_React$Component3) {
                 } else if (request.readyState === 4) {
                     state.data = null;
                     react_page.setState(state);
+                    document.getElementById('loading').style.display = 'none';
                 }
             };
         }
