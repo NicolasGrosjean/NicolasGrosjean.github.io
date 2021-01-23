@@ -75,8 +75,6 @@ var MapathonPlots = function (_React$Component3) {
                 var frames = this.state.data.frames;
                 Plotly.react('plot', this.state.data.data, this.state.data.layout, { "responsive": false }).then(function () {
                     Plotly.addFrames('plot', frames);
-                }).then(function () {
-                    Plotly.animate('plot', null);
                 });
             }
         }
