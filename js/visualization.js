@@ -54,27 +54,26 @@ var NextButton = function (_React$Component2) {
     return NextButton;
 }(React.Component);
 
-var MapathonPlots = function (_React$Component3) {
-    _inherits(MapathonPlots, _React$Component3);
+var Plots = function (_React$Component3) {
+    _inherits(Plots, _React$Component3);
 
-    function MapathonPlots(props) {
-        _classCallCheck(this, MapathonPlots);
+    function Plots(props) {
+        _classCallCheck(this, Plots);
 
-        var _this3 = _possibleConstructorReturn(this, (MapathonPlots.__proto__ || Object.getPrototypeOf(MapathonPlots)).call(this, props));
+        var _this3 = _possibleConstructorReturn(this, (Plots.__proto__ || Object.getPrototypeOf(Plots)).call(this, props));
 
-        _this3.state = { filename: 'mapathon_9975_2020-12-07.json', data: null };
+        _this3.state = { filename: 'contributors.json', data: null };
         _this3.plot = _this3.plot.bind(_this3);
         _this3.changeFile = _this3.changeFile.bind(_this3);
         return _this3;
     }
 
-    _createClass(MapathonPlots, [{
+    _createClass(Plots, [{
         key: "plot",
         value: function plot() {
             if (this.state.data !== null) {
                 var frames = this.state.data.frames;
                 Plotly.react('plot', this.state.data.data, this.state.data.layout, { "responsive": false }).then(function () {
-                    Plotly.addFrames('plot', frames);
                     document.getElementById('loading').style.display = 'none';
                 });
             }
@@ -139,22 +138,26 @@ var MapathonPlots = function (_React$Component3) {
                                 { label: "2020" },
                                 React.createElement(
                                     "option",
-                                    { value: "mapathon_9975_2020-12-07.json" },
-                                    "7th December"
+                                    { value: "contributors.json" },
+                                    "Contributors"
                                 ),
                                 React.createElement(
                                     "option",
-                                    { value: "mapathon_9932_2020-11-30.json" },
-                                    "30th November"
+                                    { value: "mapping_time.json" },
+                                    "Mapping Time"
                                 ),
                                 React.createElement(
                                     "option",
-                                    { value: "mapathon_9849_2020-11-23.json" },
-                                    "23th November"
+                                    { value: "validation_time.json" },
+                                    "Validation Time"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "total_time.json" },
+                                    "Total Time"
                                 )
                             )
-                        ),
-                        React.createElement("img", { id: "tm-legend", src: "images/TM_legend.jpg", alt: "Tasking Manager Legend" })
+                        )
                     ),
                     React.createElement(
                         "div",
@@ -171,7 +174,7 @@ var MapathonPlots = function (_React$Component3) {
         }
     }]);
 
-    return MapathonPlots;
+    return Plots;
 }(React.Component);
 
 var Video = function (_React$Component4) {
@@ -254,7 +257,7 @@ var VisualizationPage = function (_React$Component5) {
         key: "render",
         value: function render() {
             if (this.state.page == 0) {
-                return React.createElement(MapathonPlots, { previousPage: this.previousPage, nextPage: this.nextPage });
+                return React.createElement(Plots, { previousPage: this.previousPage, nextPage: this.nextPage });
             } else {
                 return React.createElement(Video, { previousPage: this.previousPage, nextPage: this.nextPage });
             }

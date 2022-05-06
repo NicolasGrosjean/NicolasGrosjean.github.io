@@ -16,10 +16,10 @@ class NextButton extends React.Component {
     }
 }
 
-class MapathonPlots extends React.Component {
+class Plots extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {filename: 'mapathon_9975_2020-12-07.json', data: null}
+        this.state = {filename: 'contributors.json', data: null}
         this.plot = this.plot.bind(this);
         this.changeFile = this.changeFile.bind(this);
     }
@@ -28,7 +28,6 @@ class MapathonPlots extends React.Component {
         if (this.state.data !== null) {
             const frames = this.state.data.frames;
             Plotly.react('plot', this.state.data.data, this.state.data.layout, {"responsive": false}).then(function(){
-                Plotly.addFrames('plot', frames);
                 document.getElementById('loading').style.display = 'none';
             });
         }
@@ -77,12 +76,12 @@ class MapathonPlots extends React.Component {
                     <div className="col-1">
                         <select className="select-css" value={this.state.filename} onChange={this.changeFile}>
                             <optgroup label="2020">
-                                <option value="mapathon_9975_2020-12-07.json">7th December</option>
-                                <option value="mapathon_9932_2020-11-30.json">30th November</option>
-                                <option value="mapathon_9849_2020-11-23.json">23th November</option>
+                                <option value="contributors.json">Contributors</option>
+                                <option value="mapping_time.json">Mapping Time</option>
+                                <option value="validation_time.json">Validation Time</option>
+                                <option value="total_time.json">Total Time</option>
                             </optgroup>
                         </select>
-                        <img id="tm-legend" src="images/TM_legend.jpg" alt="Tasking Manager Legend"/>
                     </div>
                     <div className="col-10">
                         <div id='plot'></div>
@@ -140,7 +139,7 @@ class VisualizationPage extends React.Component {
 
     render() {
         if (this.state.page == 0) {
-            return <MapathonPlots previousPage={this.previousPage} nextPage={this.nextPage}/>
+            return <Plots previousPage={this.previousPage} nextPage={this.nextPage}/>
         } else {
             return <Video previousPage={this.previousPage} nextPage={this.nextPage}/>
         }
