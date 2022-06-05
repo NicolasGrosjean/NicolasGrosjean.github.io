@@ -75,7 +75,7 @@ class Plots extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-1">
                         <select className="select-css" value={this.state.filename} onChange={this.changeFile}>
-                            <optgroup label="2020">
+                            <optgroup label="Statistic">
                                 <option value="contributors.json">Contributors</option>
                                 <option value="mapping_time.json">Mapping Time</option>
                                 <option value="validation_time.json">Validation Time</option>

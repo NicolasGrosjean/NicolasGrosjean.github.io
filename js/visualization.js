@@ -135,7 +135,7 @@ var Plots = function (_React$Component3) {
                             { className: "select-css", value: this.state.filename, onChange: this.changeFile },
                             React.createElement(
                                 "optgroup",
-                                { label: "2020" },
+                                { label: "Statistic" },
                                 React.createElement(
                                     "option",
                                     { value: "contributors.json" },
