@@ -75,11 +75,16 @@ class Plots extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-1">
                         <select className="select-css" value={this.state.filename} onChange={this.changeFile}>
-                            <optgroup label="Statistic">
+                            <optgroup label="Daily stats">
                                 <option value="contributors.json">Contributors</option>
                                 <option value="mapping_time.json">Mapping Time</option>
                                 <option value="validation_time.json">Validation Time</option>
                                 <option value="total_time.json">Total Time</option>
+                            </optgroup>
+                            <optgroup label="Yearly stats">
+                                <option value="contrib_nb.json">Contributors</option>
+                                <option value="map_contrib_nb.json">Mappers</option>
+                                <option value="valid_contrib_nb.json">Validators</option>
                             </optgroup>
                         </select>
                     </div>

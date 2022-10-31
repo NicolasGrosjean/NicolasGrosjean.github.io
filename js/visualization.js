@@ -135,7 +135,7 @@ var Plots = function (_React$Component3) {
                             { className: "select-css", value: this.state.filename, onChange: this.changeFile },
                             React.createElement(
                                 "optgroup",
-                                { label: "Statistic" },
+                                { label: "Daily stats" },
                                 React.createElement(
                                     "option",
                                     { value: "contributors.json" },
@@ -155,6 +155,25 @@ var Plots = function (_React$Component3) {
                                     "option",
                                     { value: "total_time.json" },
                                     "Total Time"
+                                )
+                            ),
+                            React.createElement(
+                                "optgroup",
+                                { label: "Yearly stats" },
+                                React.createElement(
+                                    "option",
+                                    { value: "contrib_nb.json" },
+                                    "Contributors"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "map_contrib_nb.json" },
+                                    "Mappers"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "valid_contrib_nb.json" },
+                                    "Validators"
                                 )
                             )
                         )
